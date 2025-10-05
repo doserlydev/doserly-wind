@@ -12,6 +12,7 @@ enum ProductCategory {
 }
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Product with _$Product {
   const factory Product({
     required String id,
@@ -20,7 +21,7 @@ class Product with _$Product {
     required ProductCategory category,
     String? manufacturer,
     String? description,
-    List<String>? tags,
+    @Default(<String>[]) List<String> tags,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _Product;

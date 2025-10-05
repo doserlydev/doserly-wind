@@ -27,7 +27,7 @@ mixin _$Product {
   ProductCategory get category => throw _privateConstructorUsedError;
   String? get manufacturer => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  List<String>? get tags => throw _privateConstructorUsedError;
+  List<String> get tags => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -52,7 +52,7 @@ abstract class $ProductCopyWith<$Res> {
     ProductCategory category,
     String? manufacturer,
     String? description,
-    List<String>? tags,
+    List<String> tags,
     DateTime? createdAt,
     DateTime? updatedAt,
   });
@@ -79,7 +79,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? category = null,
     Object? manufacturer = freezed,
     Object? description = freezed,
-    Object? tags = freezed,
+    Object? tags = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -109,10 +109,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
                 ? _value.description
                 : description // ignore: cast_nullable_to_non_nullable
                       as String?,
-            tags: freezed == tags
+            tags: null == tags
                 ? _value.tags
                 : tags // ignore: cast_nullable_to_non_nullable
-                      as List<String>?,
+                      as List<String>,
             createdAt: freezed == createdAt
                 ? _value.createdAt
                 : createdAt // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
     ProductCategory category,
     String? manufacturer,
     String? description,
-    List<String>? tags,
+    List<String> tags,
     DateTime? createdAt,
     DateTime? updatedAt,
   });
@@ -168,7 +168,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? category = null,
     Object? manufacturer = freezed,
     Object? description = freezed,
-    Object? tags = freezed,
+    Object? tags = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -198,10 +198,10 @@ class __$$ProductImplCopyWithImpl<$Res>
             ? _value.description
             : description // ignore: cast_nullable_to_non_nullable
                   as String?,
-        tags: freezed == tags
+        tags: null == tags
             ? _value._tags
             : tags // ignore: cast_nullable_to_non_nullable
-                  as List<String>?,
+                  as List<String>,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
@@ -225,7 +225,7 @@ class _$ProductImpl implements _Product {
     required this.category,
     this.manufacturer,
     this.description,
-    final List<String>? tags,
+    final List<String> tags = const <String>[],
     this.createdAt,
     this.updatedAt,
   }) : _tags = tags;
@@ -245,14 +245,13 @@ class _$ProductImpl implements _Product {
   final String? manufacturer;
   @override
   final String? description;
-  final List<String>? _tags;
+  final List<String> _tags;
   @override
-  List<String>? get tags {
-    final value = _tags;
-    if (value == null) return null;
+  @JsonKey()
+  List<String> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_tags);
   }
 
   @override
@@ -323,7 +322,7 @@ abstract class _Product implements Product {
     required final ProductCategory category,
     final String? manufacturer,
     final String? description,
-    final List<String>? tags,
+    final List<String> tags,
     final DateTime? createdAt,
     final DateTime? updatedAt,
   }) = _$ProductImpl;
@@ -343,7 +342,7 @@ abstract class _Product implements Product {
   @override
   String? get description;
   @override
-  List<String>? get tags;
+  List<String> get tags;
   @override
   DateTime? get createdAt;
   @override

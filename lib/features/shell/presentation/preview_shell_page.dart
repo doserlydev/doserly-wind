@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../ui/design_system/tokens/doserly_colors.dart';
+import '../../medication/presentation/medication_tracking_page.dart';
 
 class PreviewShellPage extends StatelessWidget {
   const PreviewShellPage({super.key});
@@ -49,10 +51,13 @@ class PreviewShellPage extends StatelessWidget {
                 Wrap(
                   spacing: 16,
                   runSpacing: 16,
-                  children: const [
-                    _PreviewPill(label: 'Medication tracking'),
-                    _PreviewPill(label: 'AI side-effect insights'),
-                    _PreviewPill(label: 'Supabase real-time sync'),
+                  children: [
+                    _PreviewPill(
+                      label: 'Medication tracking',
+                      onTap: () => context.go(MedicationTrackingPage.routePath),
+                    ),
+                    const _PreviewPill(label: 'AI side-effect insights'),
+                    const _PreviewPill(label: 'Supabase real-time sync'),
                   ],
                 ),
               ],
@@ -65,9 +70,10 @@ class PreviewShellPage extends StatelessWidget {
 }
 
 class _PreviewPill extends StatelessWidget {
-  const _PreviewPill({required this.label});
+  const _PreviewPill({required this.label, this.onTap});
 
   final String label;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -79,23 +85,26 @@ class _PreviewPill extends StatelessWidget {
     final borderColor =
         (palette?.outlineGlow ?? Colors.white).withValues(alpha: 0.15);
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
-        gradient: LinearGradient(
-          colors: [
-            accentCyan,
-            accentLime,
-          ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(28),
+          gradient: LinearGradient(
+            colors: [
+              accentCyan,
+              accentLime,
+            ],
+          ),
+          border: Border.all(
+            color: borderColor,
+          ),
         ),
-        border: Border.all(
-          color: borderColor,
+        child: Text(
+          label,
+          style: Theme.of(context).textTheme.labelMedium,
         ),
-      ),
-      child: Text(
-        label,
-        style: Theme.of(context).textTheme.labelMedium,
       ),
     );
   }

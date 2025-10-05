@@ -8,6 +8,7 @@ enum ProductLogType { scheduled, taken, skipped, adjusted, sideEffect }
 enum SymptomSeverity { mild, moderate, severe }
 
 @freezed
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ProductLog with _$ProductLog {
   const factory ProductLog({
     required String id,
@@ -18,7 +19,7 @@ class ProductLog with _$ProductLog {
     DateTime? completedAt,
     String? notes,
     SymptomSeverity? severity,
-    Map<String, dynamic>? metadata,
+    @Default(<String, dynamic>{}) Map<String, dynamic> metadata,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _ProductLog;

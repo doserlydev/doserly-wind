@@ -29,7 +29,7 @@ mixin _$ProductLog {
   DateTime? get completedAt => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
   SymptomSeverity? get severity => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get metadata => throw _privateConstructorUsedError;
+  Map<String, dynamic> get metadata => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
@@ -59,7 +59,7 @@ abstract class $ProductLogCopyWith<$Res> {
     DateTime? completedAt,
     String? notes,
     SymptomSeverity? severity,
-    Map<String, dynamic>? metadata,
+    Map<String, dynamic> metadata,
     DateTime? createdAt,
     DateTime? updatedAt,
   });
@@ -88,7 +88,7 @@ class _$ProductLogCopyWithImpl<$Res, $Val extends ProductLog>
     Object? completedAt = freezed,
     Object? notes = freezed,
     Object? severity = freezed,
-    Object? metadata = freezed,
+    Object? metadata = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -126,10 +126,10 @@ class _$ProductLogCopyWithImpl<$Res, $Val extends ProductLog>
                 ? _value.severity
                 : severity // ignore: cast_nullable_to_non_nullable
                       as SymptomSeverity?,
-            metadata: freezed == metadata
+            metadata: null == metadata
                 ? _value.metadata
                 : metadata // ignore: cast_nullable_to_non_nullable
-                      as Map<String, dynamic>?,
+                      as Map<String, dynamic>,
             createdAt: freezed == createdAt
                 ? _value.createdAt
                 : createdAt // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ abstract class _$$ProductLogImplCopyWith<$Res>
     DateTime? completedAt,
     String? notes,
     SymptomSeverity? severity,
-    Map<String, dynamic>? metadata,
+    Map<String, dynamic> metadata,
     DateTime? createdAt,
     DateTime? updatedAt,
   });
@@ -190,7 +190,7 @@ class __$$ProductLogImplCopyWithImpl<$Res>
     Object? completedAt = freezed,
     Object? notes = freezed,
     Object? severity = freezed,
-    Object? metadata = freezed,
+    Object? metadata = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -228,10 +228,10 @@ class __$$ProductLogImplCopyWithImpl<$Res>
             ? _value.severity
             : severity // ignore: cast_nullable_to_non_nullable
                   as SymptomSeverity?,
-        metadata: freezed == metadata
+        metadata: null == metadata
             ? _value._metadata
             : metadata // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>?,
+                  as Map<String, dynamic>,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
@@ -257,7 +257,7 @@ class _$ProductLogImpl implements _ProductLog {
     this.completedAt,
     this.notes,
     this.severity,
-    final Map<String, dynamic>? metadata,
+    final Map<String, dynamic> metadata = const <String, dynamic>{},
     this.createdAt,
     this.updatedAt,
   }) : _metadata = metadata;
@@ -281,14 +281,13 @@ class _$ProductLogImpl implements _ProductLog {
   final String? notes;
   @override
   final SymptomSeverity? severity;
-  final Map<String, dynamic>? _metadata;
+  final Map<String, dynamic> _metadata;
   @override
-  Map<String, dynamic>? get metadata {
-    final value = _metadata;
-    if (value == null) return null;
+  @JsonKey()
+  Map<String, dynamic> get metadata {
     if (_metadata is EqualUnmodifiableMapView) return _metadata;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
+    return EqualUnmodifiableMapView(_metadata);
   }
 
   @override
@@ -366,7 +365,7 @@ abstract class _ProductLog implements ProductLog {
     final DateTime? completedAt,
     final String? notes,
     final SymptomSeverity? severity,
-    final Map<String, dynamic>? metadata,
+    final Map<String, dynamic> metadata,
     final DateTime? createdAt,
     final DateTime? updatedAt,
   }) = _$ProductLogImpl;
@@ -391,7 +390,7 @@ abstract class _ProductLog implements ProductLog {
   @override
   SymptomSeverity? get severity;
   @override
-  Map<String, dynamic>? get metadata;
+  Map<String, dynamic> get metadata;
   @override
   DateTime? get createdAt;
   @override
