@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
+import 'bootstrap.dart';
 
-import 'app/doserly_app.dart';
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const DoserlyApp());
+Future<void> main() async {
+  await bootstrap();
 }

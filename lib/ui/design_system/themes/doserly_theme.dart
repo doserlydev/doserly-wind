@@ -27,11 +27,11 @@ class DoserlyTheme {
           : const Color(0xFF141624),
       secondary: palette.accentCyan,
       onSecondary: const Color(0xFF05060C),
-      secondaryContainer: palette.accentCyan.withOpacity(0.12),
+      secondaryContainer: palette.accentCyan.withValues(alpha: 0.12),
       onSecondaryContainer: palette.accentCyan,
       tertiary: palette.accentSunset,
       onTertiary: const Color(0xFFFFFFFF),
-      tertiaryContainer: palette.accentSunset.withOpacity(0.18),
+      tertiaryContainer: palette.accentSunset.withValues(alpha: 0.18),
       onTertiaryContainer: palette.accentSunset,
       error: const Color(0xFFFF4D67),
       onError: const Color(0xFFFFFFFF),
@@ -39,11 +39,12 @@ class DoserlyTheme {
       onErrorContainer: const Color(0xFFFFFFFF),
       surface: palette.surface,
       onSurface: palette.textPrimary,
-      surfaceVariant: palette.surfaceAlt,
+      surfaceContainerHighest: palette.surfaceAlt,
       onSurfaceVariant: palette.textSecondary,
       outline: palette.outlineGlow,
-      shadow: Colors.black.withOpacity(brightness == Brightness.dark ? 0.8 : 0.2),
-      scrim: Colors.black.withOpacity(0.65),
+      shadow:
+          Colors.black.withValues(alpha: brightness == Brightness.dark ? 0.8 : 0.2),
+      scrim: Colors.black.withValues(alpha: 0.65),
       inverseSurface: brightness == Brightness.dark
           ? const Color(0xFFF2F2FF)
           : const Color(0xFF08090F),
@@ -61,7 +62,7 @@ class DoserlyTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: palette.background,
       canvasColor: palette.background,
-      dialogBackgroundColor: palette.surface,
+      dialogTheme: DialogThemeData(backgroundColor: palette.surface),
       textTheme: textTheme,
       primaryTextTheme: textTheme,
       iconTheme: IconThemeData(color: palette.textSecondary),
@@ -74,13 +75,13 @@ class DoserlyTheme {
         titleTextStyle: textTheme.titleLarge,
       ),
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: palette.surface.withOpacity(0.8),
-        indicatorColor: palette.accentCyan.withOpacity(0.25),
+        backgroundColor: palette.surface.withValues(alpha: 0.8),
+        indicatorColor: palette.accentCyan.withValues(alpha: 0.25),
         labelTextStyle:
-            MaterialStateProperty.all<TextStyle?>(textTheme.labelMedium),
-        iconTheme: MaterialStateProperty.resolveWith<IconThemeData>(
+            WidgetStatePropertyAll<TextStyle?>(textTheme.labelMedium),
+        iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
           (states) {
-            final active = states.contains(MaterialState.selected);
+            final active = states.contains(WidgetState.selected);
             return IconThemeData(
               color: active ? palette.accentCyan : palette.textSecondary,
             );
@@ -96,17 +97,19 @@ class DoserlyTheme {
         unselectedLabelTextStyle: textTheme.labelMedium,
       ),
       cardTheme: CardThemeData(
-        color: palette.surface.withOpacity(0.9),
+        color: palette.surface.withValues(alpha: 0.9),
         elevation: 0,
         margin: const EdgeInsets.all(0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: palette.surfaceAlt.withOpacity(0.72),
+        fillColor: palette.surfaceAlt.withValues(alpha: 0.72),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
-          borderSide: BorderSide(color: palette.outlineGlow.withOpacity(0.3)),
+          borderSide: BorderSide(
+            color: palette.outlineGlow.withValues(alpha: 0.3),
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(18),
@@ -118,13 +121,13 @@ class DoserlyTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: palette.surfaceAlt,
-        selectedColor: palette.accentCyan.withOpacity(0.18),
+        selectedColor: palette.accentCyan.withValues(alpha: 0.18),
         labelStyle: textTheme.labelMedium,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        side: BorderSide(color: palette.outlineGlow.withOpacity(0.2)),
+        side: BorderSide(color: palette.outlineGlow.withValues(alpha: 0.2)),
       ),
       dividerTheme: DividerThemeData(
-        color: palette.outlineGlow.withOpacity(0.35),
+        color: palette.outlineGlow.withValues(alpha: 0.35),
         space: 32,
         thickness: 1,
       ),
@@ -146,11 +149,11 @@ class DoserlyTheme {
         contentTextStyle: textTheme.bodyMedium,
       ),
       scrollbarTheme: ScrollbarThemeData(
-        thumbColor: MaterialStateProperty.all<Color>(
-          palette.accentCyan.withOpacity(0.6),
+        thumbColor: WidgetStatePropertyAll<Color>(
+          palette.accentCyan.withValues(alpha: 0.6),
         ),
         radius: const Radius.circular(999),
-        thickness: MaterialStateProperty.all<double>(6),
+        thickness: WidgetStatePropertyAll<double>(6),
       ),
     );
   }
